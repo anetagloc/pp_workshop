@@ -1,5 +1,12 @@
 <tr>
   <td class="px-4 py-3 border"><%= article.title %></td>
+  <td class="px-3 py-3 "><% if article.image.attached? %>
+  <%= image_tag article.image.variant(resize_to_fit: [250, 250]) %>
+          <p>Nazwa obrazka: <%= article.image.filename.to_s %></p>
+        <% else %>
+        <p>Obrazek nie został załączony</p>
+  <% end %>
+</td>
   <td class="px-4 py-3 border"><%= article.body %></td>
   <td class="px-4 py-3 border"><%= article.published ? 'Published' : 'Draft' %></td>
   <td class="px-4 py-3 border space-x-2">
