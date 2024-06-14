@@ -1,6 +1,6 @@
 <%= form_with(model: article, local: true, class: "space-y-6") do |form| %>
  <% if article.errors.any? %>
-   <div id="error_explanation" class="bg-red border border-red text-red px-4 py-3 rounded relative">
+   <div id="error_explanation" class="bg-red border border-red text-white px-4 py-3 rounded relative">
      <h2 class="font-bold mb-2"><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
 
 
