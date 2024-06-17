@@ -5,11 +5,20 @@
      </thead>
   <tbody>
     <tr class="bg-slate">
+        <td class="px-4 py-2 border font-bold">Zdjęcie</td>
         <td class="px-4 py-2 border font-bold">Tytuł</td>
         <td class="px-4 py-2 border font-bold">Treść</td>
         <td class="px-4 py-2 border font-bold">Status</td>
     </tr>
     <tr>
+<td class="text-center">
+    <% if @article.image.attached? %>
+        <%= image_tag @article.image.variant(resize_to_fit: [250, 250]), class: "mx-auto" %>
+        <p>Nazwa obrazka: <%= @article.image.filename.to_s %></p>
+    <%else %>
+     <p>Obrazek nie został załączony</p>
+    <% end %>
+</td>
     <td class="px-4 py-3 border"><%= @article.title %></td>
     <td class="px-4 py-3 border"><%= @article.body %></td>
     <td class="px-4 py-3 border"><%= @article.published ? 'Published' : 'Draft' %></td>
