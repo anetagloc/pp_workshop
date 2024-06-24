@@ -41,20 +41,20 @@ RSpec.describe Article, type: :model do
         end
 
         context "when body is too short" do
-            let(:article) { build(:article, title: "A" * 5) }
+            let(:article) { build(:article, body: "A" * 5) }
 
             it "throws an error" do
                 expect(subject).to_not be_valid
-                expect(subject.errors[:title]).to include("body is too short")
+                expect(subject.errors[:body]).to include("body is too short")
             end
         end
 
         context "when body is too long" do
-            let(:article) { build(:article, title: "A" * 110) }
+            let(:article) { build(:article, body: "A" * 110) }
 
             it "throws an error" do
                 expect(subject).to_not be_valid
-                expect(subject.errors[:title]).to include("body is too long")
+                expect(subject.errors[:body]).to include("body is too long")
             end
         end
 
