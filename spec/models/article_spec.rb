@@ -5,11 +5,11 @@ RSpec.describe Article, type: :model do
         subject(:article) { article }
 
         context "when title is empty" do
-            let(:article) { build(:article, body: nil) }
+            let(:article) { build(:article, title: nil) }
 
             it "throws an error" do
                 expect(subject).to_not be_valid
-                expect(subject.errors[:body]).to include("can't be blank")
+                expect(subject.errors[:title]).to include("can't be blank")
             end
         end
 
@@ -50,11 +50,11 @@ RSpec.describe Article, type: :model do
         end
 
         context "when body is too long" do
-            let(:article) { build(:article, title: "a" * 31) }
+            let(:article) { build(:article, body: "a" * 301) }
               
             it "throws an error" do
               expect(article).to_not be_valid
-              expect(article.errors[:title]).to include("is too long (maximum is 30 characters)")
+              expect(article.errors[:body]).to include("is too long (maximum is 300 characters)")
             end
         end
 
