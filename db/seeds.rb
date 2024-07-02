@@ -8,3 +8,23 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+# metoda modelu
+# require 'faker'
+
+# #create articles
+# 5.times do
+#     Article.create(title: Faker::Book.title, body: Faker::Lorem.sentence(word_count: 3), published: Faker::Boolean.boolean)
+# end
+
+#factory bot
+
+require 'factory_bot_rails'
+include FactoryBot::Syntax::Methods
+
+puts "Starting"
+
+10.times do
+  create(:article)
+end
+
+puts "Ended"
