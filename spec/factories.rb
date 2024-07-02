@@ -1,6 +1,6 @@
 FactoryBot.define do
     factory(:article) do
-        title { Faker::Lorem.sentence(word_count: 4 ) }
+        title { Faker::Lorem.sentence(word_count: 2 ) }
         body { Faker::Lorem.paragraph(sentence_count: 3) }
         published { [true, false].sample() } 
         trait :with_image do

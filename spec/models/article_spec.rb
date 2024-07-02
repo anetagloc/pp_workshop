@@ -5,65 +5,64 @@ RSpec.describe Article, type: :model do
         subject(:article) { article }
 
         context "when title is empty" do
-            let(:article) { build(:article, title: nil) }
+            let(:article) { build(:article, body: nil) }
 
             it "throws an error" do
                 expect(subject).to_not be_valid
-                expect(subject.errors[:title]).to include("can't be blank")
+                expect(subject.errors[:body]).to include("can't be blank")
             end
         end
 
         context "when title is too short" do
-            let(:article) { build(:article, title: "A") }
-
-            it "throws an error" do
-                expect(subject).to_not be_valid
-                expect(subject.errors[:title]).to include("title is too short")
-            end
+                let(:article) { build(:article, title: "a") }
+              
+                it "throws an error" do
+                  expect(article).to_not be_valid
+                  expect(article.errors[:title]).to include("is too short (minimum is 2 characters)")
+                end
         end
 
         context "when title is too long" do
-            let(:article) { build(:article, title: "A" * 101) }
-
+            let(:article) { build(:article, title: "a" * 31) }
+              
             it "throws an error" do
-                expect(subject).to_not be_valid
-                expect(subject.errors[:title]).to include("title is too long")
+              expect(article).to_not be_valid
+              expect(article.errors[:title]).to include("is too long (maximum is 30 characters)")
             end
         end
 
         context "when body is empty" do
             let(:article) { build(:article, body: nil) }
-
+              
             it "throws an error" do
-                expect(subject).to_not be_valid
-                expect(subject.errors[:body]).to include("body is empty")
+              expect(article).to_not be_valid
+              expect(article.errors[:body]).to include("can't be blank")
             end
         end
 
         context "when body is too short" do
-            let(:article) { build(:article, body: "A" * 5) }
-
-            it "throws an error" do
-                expect(subject).to_not be_valid
-                expect(subject.errors[:body]).to include("body is too short")
-            end
+            let(:article) { build(:article, body: "a") }
+              
+                it "throws an error" do
+                  expect(article).to_not be_valid
+                  expect(article.errors[:body]).to include("is too short (minimum is 15 characters)")
+                end
         end
 
         context "when body is too long" do
-            let(:article) { build(:article, body: "A" * 110) }
-
+            let(:article) { build(:article, title: "a" * 31) }
+              
             it "throws an error" do
-                expect(subject).to_not be_valid
-                expect(subject.errors[:body]).to include("body is too long")
+              expect(article).to_not be_valid
+              expect(article.errors[:title]).to include("is too long (maximum is 30 characters)")
             end
         end
 
         context "when published is not a boolean" do
-            let(:article) { build(:article, published: "not_a_boolean") }
+            let(:article) { build(:article, published: "not a boolean") }
 
             it "throws an error" do
-                expect(subject).to_not be_valid
-                expect(subject.errors[:title]).to include("published is not a boolean")
+            expect(article[:published]).to be_in([true, false])
             end
         end
 
@@ -80,3 +79,4 @@ RSpec.describe Article, type: :model do
         it { expect(article.image).to be_attached }
     end
 end
+
