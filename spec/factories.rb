@@ -1,4 +1,5 @@
 FactoryBot.define do
+
     factory(:article) do
         title { Faker::Lorem.sentence(word_count: 2 ) }
         body { Faker::Lorem.paragraph(sentence_count: 3) }
@@ -9,4 +10,10 @@ FactoryBot.define do
             end      
             end
     end
-end
+    factory(:user) do
+        username { Faker::Internet.username }
+        email { Faker::Internet.email }
+        password { "Password1" }
+      end
+    end
+    
