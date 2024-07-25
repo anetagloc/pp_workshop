@@ -12,6 +12,6 @@ class User < ApplicationRecord
 
   # Permitted additional params for devise
   def self.ransackable_attributes(auth_object = nil)
-    super + ['username']
+    super + ['username'] 
   end
 end
