@@ -6,7 +6,7 @@ class User < ApplicationRecord
   EMAIL_REGEX = Devise.email_regexp
 
   validates :username, presence: true
-  validates :email , presence: true,uniqueness:{case_sensetive:false}, format:{with:EMAIL_REGEX}
+  validates :email , presence: true, uniqueness: { case_sensetive: false }, format: { with: EMAIL_REGEX }
   validates :password, presence: true
 
 

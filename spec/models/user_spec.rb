@@ -24,7 +24,7 @@ RSpec.describe User, type: :model do
     end
 
     context "when email is invalid" do
-      let(:invalid_emails) { ["plainaddress"] }
+      let(:invalid_emails) { ["plainaddress", "zeroToken"] }
     
       it 'does not allow creation of a user with an invalid email' do
         invalid_emails.each do |invalid_email|
