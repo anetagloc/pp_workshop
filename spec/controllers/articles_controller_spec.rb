@@ -46,6 +46,33 @@ RSpec.describe ArticlesController, type: :controller do
     end
 end
 
+describe "POST #create" do
+  context "when the article is valid" do
+    let(:valid_attributes) { { title: "Very valid title", body: "Very very valid value", published: true } } 
+    subject(:post_create) {post :create, params: { article: valid_attributes}}
+    let(:user) {create(:user)}
+
+    before { sign_in user }
+
+    it "creates new articles" do 
+      expect{subject}.to change(Article, :count).from(0).to(1)
+      expect(Article.last.user_id ).to eq(user.id)
+    end
+    it "redirect to article" do 
+      subject
+      expect(response).to redirect_to (articles_path)
+    end
+    end
+  context "when the article is invalid" do
+    let(:invalid_attributes) { { title: "a", body: "This is a valid body." } } # Assuming the title is invalid
+
+    subject(:create_article) { post :create, params: { article: invalid_attributes } }
+
+    it "does not create a new article" do
+    expect { create_article }.not_to change(Article, :count)
+    end
+  end
+end
 
 describe "PATCH #update" do
     let(:article) { create(:article) }
