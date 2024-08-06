@@ -41,4 +41,7 @@ RSpec.describe User, type: :model do
       end
     end
   end
+  describe 'associations' do
+    it { should have_many(:articles).dependent(:nullify)}
+  end
 end
