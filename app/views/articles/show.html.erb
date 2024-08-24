@@ -1,13 +1,14 @@
 <div class="container m-auto">
 <table class="table-auto border-collapse border my-5">
     <thead class="text-center">
-        <tr class="text-2xl">Podsumowanie</tr>
+        <tr class="text-2xl">Summary</tr>
      </thead>
   <tbody>
     <tr class="bg-slate">
-        <td class="px-4 py-2 border font-bold">Zdjęcie</td>
-        <td class="px-4 py-2 border font-bold">Tytuł</td>
-        <td class="px-4 py-2 border font-bold">Treść</td>
+        <td class="px-4 py-2 border font-bold">Picture</td>
+        <td class="px-4 py-2 border font-bold">Title</td>
+        <td class="px-4 py-2 border font-bold">Description</td>
+        <td class="px-4 py-2 border font-bold">Auhtor</td>
         <td class="px-4 py-2 border font-bold">Status</td>
     </tr>
     <tr>
@@ -21,6 +22,7 @@
 </td>
     <td class="px-4 py-3 border"><%= @article.title %></td>
     <td class="px-4 py-3 border"><%= @article.body %></td>
+    <td class="px-4 py-3 border"><%= @article.user ? @article.user.username : "Autor anonimowy" %></td>
     <td class="px-4 py-3 border"><%= @article.published ? 'Published' : 'Draft' %></td>
     </tr>
 </tbody>
