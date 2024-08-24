@@ -10,6 +10,8 @@ class User < ApplicationRecord
   validates :password, presence: true
 
 
+  has_many :articles, dependent: :nullify
+  
   # Permitted additional params for devise
   def self.ransackable_attributes(auth_object = nil)
     super + ['username'] 

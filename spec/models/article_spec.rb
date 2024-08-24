@@ -78,5 +78,8 @@ RSpec.describe Article, type: :model do
 
         it { expect(article.image).to be_attached }
     end
+    describe 'associations' do
+        it { should belong_to(:user).optional }
+      end
 end
 
