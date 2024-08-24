@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:edit, :update]
 
   # GET /articles or /articles.json
   def index
@@ -63,6 +63,12 @@ class ArticlesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_article
       @article = Article.find(params[:id])
+    end
+
+    def authorize_user!
+      unless @article.user == current_user
+        redirect_to root_path, alert: 'You dont have access to edit this article' and return
+      end
     end
 
     # Only allow a list of trusted parameters through.
