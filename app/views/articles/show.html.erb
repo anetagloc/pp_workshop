@@ -1,5 +1,5 @@
-<div class="container box-border">
-<table class="table-auto w-full border-collapse border my-5">
+<div class="container m-auto">
+<table class="table-auto border-collapse border my-5">
     <thead class="text-center">
         <tr class="text-2xl">Podsumowanie</tr>
      </thead>
@@ -27,16 +27,22 @@
 </table>
 
 
-<button class="bg-yellow font-bold py-2 px-4 rounded-full">
- <%= link_to 'Edit this article', edit_article_path(@article)%>
- </button>
- <button class="bg-red font-bold py-2 px-4 rounded-full">
-<%= link_to "Delete this article", article_path(@article), data: {
-turbo_method: :delete,
-turbo_confirm: "Are you sure you want to delete the article?"
-} %>
-</button>
-<button class="bg-bermuda font-bold py-2 px-4 rounded-full">
-<%= link_to 'Back to Articles', articles_path %>
-</button>
+<div class="flex justify-between space-x-10">
+  <button class="bg-yellow font-bold py-2 px-4 rounded-full">
+    <%= link_to 'Edit this article', edit_article_path(@article), class: "mb-6" %>
+  </button>
+  
+  <button class="bg-red font-bold py-2 px-4 rounded-full">
+    <%= link_to "Delete this article", article_path(@article), data: {
+      turbo_method: :delete,
+      turbo_confirm: "Are you sure you want to delete the article?"
+    } %>
+  </button>
+  
+  <button class="bg-bermuda font-bold py-2 px-4 rounded-full">
+    <%= link_to 'Back to Articles', articles_path %>
+  </button>
+</div>
+
+
 </div>
